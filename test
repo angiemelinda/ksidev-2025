@@ -1,0 +1,198 @@
+Powered by Pentest-Tools.com
+
+Scanning target: https://bearing-restoration-pest-hub.trycloudflare.com/
+
+Progress: ************************************************** 100%
+  Status: Finished
+  Start time: 2025-07-01 11:32:04
+  Duration: 29 seconds
+  Total tests: 40
+  Finished tests: 40
+
++----------------------------------------------------------+
+|                Vulnerability Scan Report                 |
++----------------------------------------------------------+
+
+
+[1] Missing security header: X-Content-Type-Options
+        - Risk Level: 1 (Low)
+
+        Vulnerability Details:
+        - Evidence 1:
+                - URL: https://bearing-restoration-pest-hub.trycloudflare.com/
+                - Evidence: Response headers do not include the X-Content-Type-Options HTTP security header Request / Response
+
+
+        - Description: We noticed that the target application's server responses lack the <code>X-Content-Type-Options</code> header. This header is particularly important for preventing Internet Explorer from reinterpreting the content of a web page (MIME-sniffing) and thus overriding the value of the Content-Type header.
+        - Recommendation: We recommend setting the X-Content-Type-Options header such as `X-Content-Type-Options: nosniff`.
+
+
+[2] Missing security header: Content-Security-Policy
+        - Risk Level: 1 (Low)
+
+        Vulnerability Details:
+        - Evidence 1:
+                - URL: https://bearing-restoration-pest-hub.trycloudflare.com/
+                - Evidence: Response does not include the HTTP Content-Security-Policy security header or meta tag Request / Response
+
+
+        - Description: We noticed that the target application lacks the Content-Security-Policy (CSP) header in its HTTP responses. The CSP header is a security measure that instructs web browsers to enforce specific security rules, effectively preventing the exploitation of Cross-Site Scripting (XSS) vulnerabilities.
+        - Recommendation: Configure the Content-Security-Header to be sent with each HTTP response in order to apply the specific policies needed by the application.
+
+
+[3] Missing security header: Strict-Transport-Security
+        - Risk Level: 1 (Low)
+
+        Vulnerability Details:
+        - Evidence 1:
+                - URL: https://bearing-restoration-pest-hub.trycloudflare.com/
+                - Evidence: Response headers do not include the HTTP Strict-Transport-Security header Request / Response
+
+
+        - Description: We noticed that the target application lacks the HTTP Strict-Transport-Security header in its responses. This security header is crucial as it instructs browsers to only establish secure (HTTPS) connections with the web server and reject any HTTP connections.
+        - Recommendation: The Strict-Transport-Security HTTP header should be sent with each HTTPS response. The syntax is as follows: `Strict-Transport-Security: max-age=&lt;seconds>[; includeSubDomains]` The parameter `max-age` gives the time frame for requirement of HTTPS in seconds and should be chosen quite high, e.g. several months. A value below 7776000 is considered as too low by this scanner check. The flag `includeSubDomains` defines that the policy applies also for sub domains of the sender of the response.
+
+
+[4] Missing security header: Referrer-Policy
+        - Risk Level: 1 (Low)
+
+        Vulnerability Details:
+        - Evidence 1:
+                - URL: https://bearing-restoration-pest-hub.trycloudflare.com/
+                - Evidence: Response headers do not include the Referrer-Policy HTTP security header as well as the <meta> tag with name 'referrer' is not present in the response. Request / Response
+
+
+        - Description: We noticed that the target application's server responses lack the <code>Referrer-Policy</code> HTTP header, which controls how much referrer information the browser will send with each request originated from the current web application.
+        - Recommendation: The Referrer-Policy header should be configured on the server side to avoid user tracking and inadvertent information leakage. The value `no-referrer` of this header instructs the browser to omit the Referer header entirely.
+
+
+[5] Server software and technology found
+        - Risk Level: 1 (Low)
+
+        Vulnerability Details:
+        - Evidence 1:
+                - Software / Version: Alpine.js
+                - Category: JavaScript frameworks
+
+        - Evidence 2:
+                - Software / Version: Bunny
+                - Category: CDN
+
+        - Evidence 3:
+                - Software / Version: daisyUI 4.6.1
+                - Category: UI frameworks
+
+        - Evidence 4:
+                - Software / Version: Bunny Fonts
+                - Category: Font scripts
+
+        - Evidence 5:
+                - Software / Version: Livewire
+                - Category: Web frameworks, Miscellaneous
+
+        - Evidence 6:
+                - Software / Version: Laravel
+                - Category: Web frameworks
+
+        - Evidence 7:
+                - Software / Version: PHP 8.3.22
+                - Category: Programming languages
+
+        - Evidence 8:
+                - Software / Version: Tailwind CSS
+                - Category: UI frameworks
+
+        - Evidence 9:
+                - Software / Version: Cloudflare
+                - Category: CDN
+
+        - Evidence 10:
+                - Software / Version: jsDelivr
+                - Category: CDN
+
+
+        - Description: We noticed that server software and technology details are exposed, potentially aiding attackers in tailoring specific exploits against identified systems and versions.
+        - Recommendation: We recommend you to eliminate the information which permits the identification of software platform, technology, server and operating system: HTTP server headers, HTML meta information, etc.
+
+
+[6] Robots.txt file found
+        - Risk Level: 1 (Low)
+
+        Vulnerability Details:
+        - Evidence 1:
+                - URL: https://bearing-restoration-pest-hub.trycloudflare.com/robots.txt
+
+
+        - Description: We found the robots.txt on the target server. This file instructs web crawlers what URLs and endpoints of the web application they can visit and crawl. Website administrators often misuse this file while attempting to hide some web pages from the users.
+        - Recommendation: We recommend you to manually review the entries from robots.txt and remove the ones which lead to sensitive locations in the website (ex. administration panels, configuration files, etc).
+
+
+[7] Login Interface Found
+        - Risk Level: 0 (Info)
+
+        Vulnerability Details:
+        - Evidence 1:
+                - URL: https://bearing-restoration-pest-hub.trycloudflare.com/admin/login
+                - Evidence: `<input autocomplete="on" autofocus="autofocus" class="fi-input block w-full border-none py-1.5 text-base text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 disabled:[-webkit-text-fill-color:theme(colors.gray.500)] disabled:placeholder:[-webkit-text-fill-color:theme(colors.gray.400)] dark:text-white dark:placeholder:text-gray-500 dark:disabled:text-gray-400 dark:disabled:[-webkit-text-fill-color:theme(colors.gray.400)] dark:disabled:placeholder:[-webkit-text-fill-color:theme(colors.gray.500)] sm:text-sm sm:leading-6 bg-white/0 ps-3 pe-3" id="data.email" required="required" tabindex="1" type="email" wire:model="data.email"/> <input autocomplete="current-password" class="fi-input block w-full border-none py-1.5 text-base text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 disabled:[-webkit-text-fill-color:theme(colors.gray.500)] disabled:placeholder:[-webkit-text-fill-color:theme(colors.gray.400)] dark:text-white dark:placeholder:text-gray-500 dark:disabled:text-gray-400 dark:disabled:[-webkit-text-fill-color:theme(colors.gray.400)] dark:disabled:placeholder:[-webkit-text-fill-color:theme(colors.gray.500)] sm:text-sm sm:leading-6 bg-white/0 ps-3 pe-3 [&::-ms-reveal]:hidden" id="data.password" required="required" tabindex="2" wire:model="data.password" x-bind:type="isPasswordRevealed ? 'text' : 'password'"/> <button class="fi-btn relative grid-flow-col items-center justify-center font-semibold outline-none transition duration-75 focus-visible:ring-2 rounded-lg fi-color-cust... (truncated)` Request / Response
+
+
+        - Description: We have discovered that the target application presents a login interface that could be a potential target for attacks. While login interfaces are standard for user authentication, they can become vulnerabilities if not properly secured.
+        - Recommendation: Ensure each interface is not bypassable using common knowledge of the application or leaked credentials using occasional password audits.
+
+
+[8] Security.txt file is missing
+        - Risk Level: 0 (Info)
+
+        Vulnerability Details:
+        - Evidence 1:
+                - URL: Missing: https://bearing-restoration-pest-hub.trycloudflare.com/.well-known/security.txt
+
+
+        - Description: We have noticed that the server is missing the security.txt file, which is considered a good practice for web security. It provides a standardized way for security researchers and the public to report security vulnerabilities or concerns by outlining the preferred method of contact and reporting procedures.
+        - Recommendation: We recommend you to implement the security.txt file according to the standard, in order to allow researchers or users report any security issues they find, improving the defensive mechanisms of your server.
+
+
+[9] Website is accessible.
+[10] Nothing was found for vulnerabilities of server-side software.
+[11] Nothing was found for client access policies.
+[12] Nothing was found for use of untrusted certificates.
+[13] Nothing was found for enabled HTTP debug methods.
+[14] Nothing was found for enabled HTTP OPTIONS method.
+[15] Nothing was found for secure communication.
+[16] Nothing was found for directory listing.
+[17] Nothing was found for passwords submitted unencrypted.
+[18] Nothing was found for error messages.
+[19] Nothing was found for debug messages.
+[20] Nothing was found for code comments.
+[21] Nothing was found for missing HTTP header - Feature.
+[22] Nothing was found for passwords submitted in URLs.
+[23] Nothing was found for domain too loose set for cookies.
+[24] Nothing was found for mixed content between HTTP and HTTPS.
+[25] Nothing was found for cross domain file inclusion.
+[26] Nothing was found for internal error code.
+[27] Nothing was found for HttpOnly flag of cookie.
+[28] Nothing was found for Secure flag of cookie.
+[29] Nothing was found for secure password submission.
+[30] Nothing was found for sensitive data.
+[31] Nothing was found for unsafe HTTP header Content Security Policy.
+[32] Nothing was found for OpenAPI files.
+[33] Nothing was found for file upload.
+[34] Nothing was found for SQL statement in request parameter.
+[35] Nothing was found for password returned in later response.
+[36] Nothing was found for Path Disclosure.
+[37] Nothing was found for Session Token in URL.
+[38] Nothing was found for API endpoints.
+[39] Nothing was found for emails.
+[40] Nothing was found for missing HTTP header - Rate Limit.
+
++----------------- TEST summary -----------------+
+|                                                |
+|  URL: https://bearing-restoration-pest-hub.trycloudflare.com/|
+|  High Risk Findings: 0                         |
+|  Medium Risk Findings: 0                       |
+|  Low Risk Findings: 6                          |
+|  Info Risk Findings: 34                        |
+|  Start time: 2025-07-01 11:32:04               |
+|  End time: 2025-07-01 11:32:33                 |
+|                                                |
++------------------------------------------------+
